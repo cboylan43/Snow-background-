@@ -1,0 +1,16 @@
+var b2bGR = new GlideRecord('cmdb_ci_pc_hardware'); // need to be changed to correct table
+			b2bGR.addQuery('u_verification_status', "200");
+			b2bGR.orderBy('sys_created_on');
+			b2bGR.setLimit(2);
+			b2bGR.query();
+			while(b2bGR.next()){
+ gs.print('results-- ' + JSON.stringify(b2bGR));
+gs.print ('config id'+ b2bGR.u_config_item_id);
+
+var ftemp = b2bGR.getFields();
+gs.print(ftemp);  // this just gets the values
+
+for (var num = 0; num < ftemp.size(); num++) {
+        var ed =ftemp.get(num).getED(); // this get the field names
+        gs.print(ed +':'+ ftemp.get(num));
+}
