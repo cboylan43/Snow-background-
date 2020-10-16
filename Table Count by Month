@@ -1,0 +1,28 @@
+This will return a listing of number of records in a table by month.  Set to only look at last 9 months
+
+var trend = new GlideAggregate('task_ci');
+trend.addTrend ('sys_updated_on','Month');
+trend.addEncodedQuery ('sys_updated_on>javascript:gs.monthsAgoStart(8)');
+trend.addAggregate('COUNT');
+trend.setGroup(false);
+trend.query();
+while(trend.next()) {
+   gs.print( trend.getValue('timeref') +': ' + trend.getAggregate('COUNT'));
+}
+
+
+Single table full count:
+var trend = new GlideAggregate('x_gege9_b2b_integr_b2b_transaction');
+trend.addAggregate('COUNT');
+trend.query();
+while(trend.next()) {
+   gs.info( trend.getAggregate('COUNT'));
+}
+
+
+var trend = new GlideAggregate('u_psp_receipt');
+trend.addAggregate('COUNT');
+trend.query();
+while(trend.next()) {
+   gs.info( trend.getAggregate('COUNT'));
+}
