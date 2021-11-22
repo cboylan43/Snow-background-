@@ -1,0 +1,17 @@
+var temp = GlideRecord('sys_properties')
+
+temp.get('name','glide.outbound_http_log.override')
+
+gs.info ( temp.value.toString())
+
+temp.value='true';
+temp.update();
+gs.info ( temp.value.toString())
+
+temp.get('name','glide.outbound_http_log.override.level')
+
+gs.info ( temp.value.toString())
+
+temp.value='all';
+temp.update();
+gs.info ( temp.value.toString())
